@@ -94,7 +94,7 @@ main {
 }
 
 .divImg{
-  height: 60%;
+  height: 50%;
   width: 100%;
 }
 
@@ -103,7 +103,7 @@ main {
   height: 100%;
 }
 .divDescription {
-  padding: 10px 0;
+  padding: 1px ;
   display: flex;
   flex-direction: column;
 }
