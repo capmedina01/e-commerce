@@ -6,14 +6,24 @@
     <title>Carrito de compras</title>
 </head>
 <body>
+    <header>
+        <div>
+          <a href="index.html">Regresar a la tienda</a>
+        </div>
+      </header>
     <main>
         <section>
             <h1>TUS COMPRAS</h1>
+            <div id="cart-items"></div>
         </section>
         <section>
-            
+            <div id="cart-summary">
+                <h2>Total: $<span id="cart-total">0</span></h2>
+                <button id="checkout-btn">Finalizar Compra</button>
+              </div>
         </section>
     </main>
-    
+    <footer></footer>
+    <script src="scripts/cart.js"></script>
 </body>
 </html>
