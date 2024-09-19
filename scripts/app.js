@@ -3,6 +3,8 @@ const url = "https://fakestoreapi.com/products";
 const cartIcon = document.getElementById("cart-icon");
 const cartCount = document.getElementById("cart-count");
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 /*window.addEventListener("DOMContentLoaded", );*/
 
 const getAllProducts = async (url) => {
@@ -42,7 +44,7 @@ function createCard(element) {
   categoryCard.textContent = element.category;
 
   addToCartButton.textContent = "Añadir al carrito";
-  addToCartButton.addEventListener("click", () => addToCart(product));
+  addToCartButton.addEventListener("click", () => addToCart(element));
 
   divImg.appendChild(imgCard);
   divDescription.appendChild(description);
@@ -53,4 +55,22 @@ function createCard(element) {
   divCard.appendChild(addToCartButton);
 
   container.appendChild(divCard);
+}
+
+function addToCart(product) {
+  const productInCart = cart.find((item) => item.id === product.id);
+
+  if (productInCart) {
+    productInCart.quantity++;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalItems;
 }
